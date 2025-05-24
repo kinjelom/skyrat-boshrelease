@@ -1,0 +1,7 @@
+---
+name: bosh_exporter
+
+files:
+  - meta-info/blobs-versions.env
+  - common/utils.sh
+  - bosh_exporter/*.linux-amd64.tar.gz

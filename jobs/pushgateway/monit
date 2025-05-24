@@ -1,0 +1,5 @@
+check process pushgateway
+  with pidfile /var/vcap/sys/run/pushgateway/pushgateway.pid
+  start program "/var/vcap/jobs/pushgateway/bin/pushgateway_ctl.sh start" with timeout 180 seconds
+  stop program "/var/vcap/jobs/pushgateway/bin/pushgateway_ctl.sh stop" with timeout 180 seconds
+  group vcap

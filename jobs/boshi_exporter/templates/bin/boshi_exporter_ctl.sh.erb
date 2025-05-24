@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+set -eu
+
+PKG_DIR=/var/vcap/packages/boshi_exporter
+RUN_DIR=/var/vcap/sys/run/boshi_exporter
+LOG_DIR=/var/vcap/sys/log/boshi_exporter
+mkdir -p "$RUN_DIR" "$LOG_DIR"
+chown vcap:vcap -R "$RUN_DIR" "$LOG_DIR"
+
+PIDFILE="${RUN_DIR}/boshi_exporter.pid"
+
+exec 1>> ${LOG_DIR}/$(basename "$0").stdout.log
+exec 2>> ${LOG_DIR}/$(basename "$0").stderr.log
+
+source "${PKG_DIR}/common/pid_utils.sh"
+
+case $1 in
+
+  start)
+    pid_guard ${PIDFILE} "boshi_exporter"
+    echo $$ > ${PIDFILE}
+
+    <%- p("boshi_exporter.env", {}).each do |key, val| -%>
+    export <%= key %>='<%= val %>'
+    <%- end -%>
+
+    exec "${PKG_DIR}/bin/boshi_exporter" \
+      --bosh.spec-path "/var/vcap/bosh/spec.json" \
+      --monit.path "/var/vcap/bosh/bin/monit" \
+      --web.listen-address "<%= p('boshi_exporter.web.listen_address') %>" \
+      --web.telemetry-path "<%= p('boshi_exporter.web.telemetry_path') %>" \
+      --metrics.namespace "<%= p('boshi_exporter.metrics.namespace') %>" \
+      --metrics.environment "<%= p('boshi_exporter.metrics.environment') %>" \
+      --metrics.bosh-name "<%= p('boshi_exporter.metrics.bosh_name') %>" \
+      --metrics.bosh-uuid "<%= p('boshi_exporter.metrics.bosh_uuid') %>" \
+      --log.level "<%= p('boshi_exporter.log.level') %>" \
+      1>>  ${LOG_DIR}/boshi_exporter.stdout.log \
+      2>> ${LOG_DIR}/boshi_exporter.stderr.log
+    ;;
+
+  stop)
+    kill_and_wait ${PIDFILE}
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+    ;;
+
+esac
+exit 0

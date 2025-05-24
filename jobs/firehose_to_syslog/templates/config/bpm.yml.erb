@@ -1,0 +1,5 @@
+processes:
+  - name: firehose_to_syslog
+    executable: /var/vcap/jobs/firehose_to_syslog/bin/firehose_to_syslog.sh
+    ephemeral_disk: true
+    persistent_disk: true

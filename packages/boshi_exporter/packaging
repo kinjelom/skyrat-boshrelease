@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -eux
+
+source meta-info/blobs-versions.env
+
+# Copy common utils
+mkdir -p "${BOSH_INSTALL_TARGET}/common"
+cp -a "${BOSH_COMPILE_TARGET}/common/"* "${BOSH_INSTALL_TARGET}/common"
+
+mkdir -p "${BOSH_INSTALL_TARGET}/bin"
+tar zxf "boshi_exporter/boshi_exporter_${BOSHI_EXPORTER_VERSION}.linux-amd64.tar.gz" --strip 1 -C "${BOSH_INSTALL_TARGET}/bin"

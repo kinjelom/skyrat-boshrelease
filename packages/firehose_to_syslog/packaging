@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -eux
+
+source meta-info/blobs-versions.env
+
+mkdir -p "${BOSH_INSTALL_TARGET}/bin"
+cp -a "firehose_to_syslog/firehose_to_syslog_${FIREHOSE_TO_SYSLOG_VERSION}" "${BOSH_INSTALL_TARGET}/bin/firehose_to_syslog"
+chmod a+x "${BOSH_INSTALL_TARGET}/bin/firehose_to_syslog"
+

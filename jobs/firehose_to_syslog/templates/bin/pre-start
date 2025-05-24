@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -eu
+
+mkdir -p "/var/vcap/store/firehose_to_syslog/data"
+chown -R vcap:vcap "/var/vcap/store/firehose_to_syslog"

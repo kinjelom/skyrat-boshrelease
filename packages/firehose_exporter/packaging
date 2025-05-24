@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eux
+
+source meta-info/blobs-versions.env
+
+mkdir -p "${BOSH_INSTALL_TARGET}/bin"
+tar zxf "firehose_exporter/firehose_exporter_${FIREHOSE_EXPORTER_VERSION}.linux-amd64.tar.gz" --strip 1 -C "${BOSH_INSTALL_TARGET}/bin"

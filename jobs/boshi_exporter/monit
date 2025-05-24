@@ -1,0 +1,5 @@
+check process boshi_exporter
+  with pidfile /var/vcap/sys/run/boshi_exporter/boshi_exporter.pid
+  start program "/var/vcap/jobs/boshi_exporter/bin/boshi_exporter_ctl start"
+  stop program "/var/vcap/jobs/boshi_exporter/bin/boshi_exporter_ctl stop"
+  group vcap

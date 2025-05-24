@@ -1,0 +1,94 @@
+---
+name: firehose_to_syslog
+
+description: This job ingests log messages from Cloud Foundry via Firehose interface
+
+packages:
+  - firehose_to_syslog
+
+templates:
+  bin/firehose_to_syslog.sh: bin/firehose_to_syslog.sh
+  bin/pre-start: bin/pre-start
+  config/bpm.yml.erb: config/bpm.yml
+  config/cert.pem.erb: config/cert.pem
+
+properties:
+  firehose_to_syslog.debug:
+    description: Debug level logging. This disables forwarding to syslog
+    default: false
+  firehose_to_syslog.enable_stats_server:
+    description: "Will enable firehose_to_syslog stats server on port 8080"
+    default: false
+  firehose_to_syslog.logstash.metadata_level:
+    description: "Whether to include additional metadata throughout the event lifecycle. NONE = disabled, DEBUG = fully enabled"
+    default: "NONE"
+
+  firehose_to_syslog.cloudfoundry.api_endpoint:
+    description: "URI of the CF cloud controller"
+  firehose_to_syslog.cloudfoundry.doppler_endpoint:
+    description: "URI of the loggregator endpoint"
+  firehose_to_syslog.cloudfoundry.skip_ssl_validation:
+    description: "Set to true to skip SSL validation when connecting to CF (defaults to false)"
+    default: false
+  firehose_to_syslog.cloudfoundry.firehose_client_id:
+    description: "CF UAA client ID with 'doppler.firehose' permissions"
+    default: "firehose-to-syslog"
+  firehose_to_syslog.cloudfoundry.firehose_client_secret:
+    description: "CF UAA client secret with 'doppler.firehose' permissions"
+  firehose_to_syslog.cloudfoundry.firehose_subscription_id:
+    description: "ID for the firehose-to-syslog subscription"
+    default: "firehose"
+
+  firehose_to_syslog.cloudfoundry.firehose_events:
+    description: "List of events you would like to get. Valid options are ContainerMetric, CounterEvent, Error, HttpStartStop, LogMessage, ValueMetric."
+    default: ["LogMessage"]
+  firehose_to_syslog.cloudfoundry.firehose_cc_pull_interval:
+    description: "full app metadata update interval; defaults to 60s"
+    default: "60s"
+  firehose_to_syslog.cloudfoundry.ignore_missing_apps:
+    description: "Enable throttling on cache lookup for missing apps"
+    default: false
+  firehose_to_syslog.cloudfoundry.min_retry_delay:
+    description: "Doppler Cloud Foundry Doppler min. retry delay duration"
+    default: "500ms"
+  firehose_to_syslog.cloudfoundry.max_retry_delay:
+    description: "Doppler Cloud Foundry Doppler max. retry delay duration"
+    default: "1m"
+  firehose_to_syslog.cloudfoundry.max_retry_count:
+    description: "Doppler Cloud Foundry Doppler max. retry Count duration"
+    default: 1000
+  firehose_to_syslog.cloudfoundry.logs_buffer_size:
+    description: "Firehose message are bufferized before being send to syslog"
+    default: 10000
+  firehose_to_syslog.cloudfoundry.cc_polling_request:
+    description: "Cloud Controller polling requests by second"
+    default: 50
+  firehose_to_syslog.cloudfoundry.extra_fields:
+    description: "(Optional) Additional fields to add to syslog output"
+    example:
+      extra_fields:
+        env: dev
+        foo: bar
+  firehose_to_syslog.cloudfoundry.log_formatter_type:
+    description: "Log formatter type to use. Valid options are text, json, json-cee"
+    default: json
+  firehose_to_syslog.cloudfoundry.orgs:
+    description: "List of CF orgs to forward logs from"
+  firehose_to_syslog.cloudfoundry.app_name_suffixes_to_strip:
+    description: "List of suffixes that should be stripped from application names"
+
+  firehose_to_syslog.syslog.host:
+    description: IP or hostname of the syslog drain
+    default: "127.0.0.1"
+  firehose_to_syslog.syslog.port:
+    description: port of the syslog drain
+    default: 5514
+  firehose_to_syslog.syslog.protocol:
+    description: Syslog protocol (tcp/udp).
+    default: tcp
+  firehose_to_syslog.syslog.cert_pem:
+    description: Certificate PEM.
+    default: ~
+  firehose_to_syslog.syslog.skip_ssl_validation:
+    description: "Skip SSL validation for syslog"
+    default: false
