@@ -1,0 +1,6 @@
+---
+name: cf_exporter
+
+files:
+  - meta-info/blobs-versions.env
+  - cf_exporter/*.linux-amd64.tar.gz

@@ -1,0 +1,44 @@
+---
+name: boshi_exporter
+
+packages:
+  - boshi_exporter
+
+templates:
+  bin/boshi_exporter_ctl.sh.erb: bin/boshi_exporter_ctl
+  #config/bpm.yml.erb: config/bpm.yml
+
+properties:
+  boshi_exporter.web.listen_address:
+    description: "Address to listen on for web interface and telemetry ($BOSHI_EXPORTER_WEB_LISTEN_ADDRESS)"
+    default: ":9191"
+
+  boshi_exporter.web.telemetry_path:
+    description: "Path under which to expose Prometheus metrics ($BOSHI_EXPORTER_WEB_TELEMETRY_PATH)"
+    default: "/metrics"
+
+  boshi_exporter.metrics.namespace:
+    description: "Metrics namespace, default: boshi ($BOSHI_EXPORTER_METRICS_NAMESPACE)"
+    default: "boshi"
+
+  boshi_exporter.metrics.environment:
+    description: "Environment label (e.g. prod/dev) to be attached to metrics ($BOSHI_EXPORTER_METRICS_ENVIRONMENT)"
+    default: ""
+
+  boshi_exporter.metrics.bosh_name:
+    description: "Bosh director name label to be attached to metrics ($BOSHI_EXPORTER_METRICS_BOSH_NAME)"
+    default: ""
+
+  boshi_exporter.metrics.bosh_uuid:
+    description: |
+      Bosh director UUID label to be attached to metrics ($BOSHI_EXPORTER_METRICS_BOSH_UUID).
+      `bosh env --json | jq -r '.Tables[0].Rows[0].uuid'
+    default: ""
+
+  boshi_exporter.log.level:
+    description: "Defines the minimum severity of messages that will be emitted, can be: debug, info, warn, error. Default: info. ($BOSHI_EXPORTER_LOG_LEVEL)"
+    default: "info"
+
+  boshi_exporter.env:
+    description: "Environment variables map"
+    default: {}

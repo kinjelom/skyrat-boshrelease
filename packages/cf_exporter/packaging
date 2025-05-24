@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eux
+
+source meta-info/blobs-versions.env
+
+mkdir -p "${BOSH_INSTALL_TARGET}/bin"
+tar zxf "cf_exporter/cf_exporter_${CF_EXPORTER_VERSION}.linux-amd64.tar.gz" --strip 1 -C "${BOSH_INSTALL_TARGET}/bin"

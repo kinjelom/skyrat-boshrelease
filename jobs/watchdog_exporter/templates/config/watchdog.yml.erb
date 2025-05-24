@@ -1,0 +1,22 @@
+settings:
+  listen-address: <%= p('watchdog_exporter.listen_address') %>
+  telemetry-path: <%= p('watchdog_exporter.telemetry_path') %>
+  max-workers-count: <%= p('watchdog_exporter.max_workers_count') %>
+  default-timeout: <%= p('watchdog_exporter.default_timeout') %>
+  response-body-limit: <%= p('watchdog_exporter.response_body_limit') %>
+  debug: <%= p('watchdog_exporter.debug') %>
+
+metrics:
+  namespace: <%= p('watchdog_exporter.metrics.namespace') %>
+  environment: <%= p('watchdog_exporter.metrics.environment') %>
+
+<%-
+  routes_root = {}
+  routes_root["routes"] = p('watchdog_exporter.routes', {})
+  endpoints_root = {}
+  endpoints_root["endpoints"] = p('watchdog_exporter.endpoints', {})
+-%>
+
+<%= routes_root.to_yaml.sub(/\A---\s*\n/, '').chomp %>
+
+<%= endpoints_root.to_yaml.sub(/\A---\s*\n/, '').chomp %>

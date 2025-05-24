@@ -1,0 +1,71 @@
+---
+name: watchdog_exporter
+
+packages:
+  - watchdog_exporter
+
+templates:
+  config/bpm.yml.erb: config/bpm.yml
+  config/watchdog.yml.erb: config/watchdog.yml
+
+properties:
+  watchdog_exporter.listen_address:
+    description: ""
+    default: "0.0.0.0:9321"
+  watchdog_exporter.telemetry_path:
+    description: ""
+    default: /metrics
+  watchdog_exporter.max_workers_count:
+    description: ""
+    default: 4
+  watchdog_exporter.default_timeout:
+    description: ""
+    default: 5s
+  watchdog_exporter.response_body_limit:
+    description: ""
+    default: 1024
+  watchdog_exporter.debug:
+    description: ""
+    default: false
+
+  watchdog_exporter.metrics.namespace:
+    description: ""
+    default: watchdog
+  watchdog_exporter.metrics.environment:
+    description: ""
+    default: dev
+
+  watchdog_exporter.routes:
+    description: ""
+    default:
+      direct: {}
+
+  watchdog_exporter.endpoints:
+    description: ""
+    default: {}
+    example:
+      "example.com":
+        protocol: http
+        routes: [direct]
+        request:
+          method: GET
+          url: "https://example.com"
+          headers: {}
+        validation:
+          status-code: 200
+          headers:
+            "content-type": "text/html"
+          body-regex: ".*Wrong Domain.*"
+      "example.org":
+        protocol: http
+        routes: [direct]
+        request:
+          timeout: 10s
+          method: GET
+          url: "https://example.org"
+          headers: {}
+        validation:
+          status-code: 200
+          headers:
+            "content-type": "text/html"
+          body-regex: ".*Example Domain.*"

@@ -1,0 +1,6 @@
+---
+name: watchdog_exporter
+
+files:
+  - meta-info/blobs-versions.env
+  - watchdog_exporter/*.linux-amd64.tar.gz

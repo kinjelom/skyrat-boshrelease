@@ -1,0 +1,38 @@
+processes:
+  - name: boshi_exporter
+    executable: /var/vcap/packages/boshi_exporter/bin/boshi_exporter
+    args:
+      - --bosh.spec-path
+      - "/var/vcap/bosh/spec.json"
+      - --monit.path
+      - "/var/vcap/bosh/bin/monit"
+      - --web.listen-address
+      - "<%= p('boshi_exporter.web.listen_address') %>"
+      - --web.telemetry-path
+      - "<%= p('boshi_exporter.web.telemetry_path') %>"
+      - --metrics.namespace
+      - "<%= p('boshi_exporter.metrics.namespace') %>"
+      - --metrics.environment
+      - "<%= p('boshi_exporter.metrics.environment') %>"
+      - --metrics.bosh-name
+      - "<%= p('boshi_exporter.metrics.bosh_name') %>"
+      - --metrics.bosh-uuid
+      - "<%= p('boshi_exporter.metrics.bosh_uuid') %>"
+      - --log.level
+      - "<%= p('boshi_exporter.log.level') %>"
+    additional_volumes:
+      - path: /var/vcap/bosh
+      - path: /var/vcap/bosh/bin
+        allow_executions: true
+    unsafe:
+      unrestricted_volumes:
+        - path: "/var/vcap/jobs"
+        - path: "/var/vcap/bosh"
+          allow_executions: true
+        - path: "/var/vcap/sys/log"
+          writable: true
+          mount_only: true
+    env:
+    <%- p("boshi_exporter.env", {}).each do |key, val| -%>
+      <%= key %>: <%= val %>
+    <%- end -%>

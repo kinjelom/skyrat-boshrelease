@@ -1,0 +1,5 @@
+check process firehose_to_syslog
+  with pidfile /var/vcap/sys/run/bpm/firehose_to_syslog/firehose_to_syslog.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start firehose_to_syslog" with timeout 180 seconds
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop firehose_to_syslog" with timeout 180 seconds
+  group vcap

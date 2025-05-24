@@ -1,0 +1,5 @@
+check process watchdog_exporter
+  with pidfile   /var/vcap/sys/run/bpm/watchdog_exporter/watchdog_exporter.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start watchdog_exporter" with timeout 180 seconds
+  stop program  "/var/vcap/jobs/bpm/bin/bpm stop watchdog_exporter" with timeout 180 seconds
+  group vcap

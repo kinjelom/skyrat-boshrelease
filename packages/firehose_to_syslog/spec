@@ -1,0 +1,6 @@
+---
+name: firehose_to_syslog
+
+files:
+  - meta-info/blobs-versions.env
+  - firehose_to_syslog/*

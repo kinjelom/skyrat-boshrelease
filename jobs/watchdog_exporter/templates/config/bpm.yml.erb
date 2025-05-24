@@ -1,0 +1,6 @@
+processes:
+  - name: watchdog_exporter
+    executable: /var/vcap/packages/watchdog_exporter/bin/watchdog_exporter
+    args:
+      - --config
+      - "/var/vcap/jobs/watchdog_exporter/config/watchdog.yml"

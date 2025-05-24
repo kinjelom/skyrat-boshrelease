@@ -1,0 +1,46 @@
+---
+name: pushgateway
+
+packages:
+  - pushgateway
+
+templates:
+  bin/pushgateway_ctl.sh: bin/pushgateway_ctl.sh
+  config/web.yaml: config/web.yaml
+
+properties:
+  pushgateway.web.port:
+    description: "Port on which to expose the web interface, API, and telemetry"
+    default: "9091"
+  pushgateway.web.external_url:
+    description: "The URL under which the Pushgateway is externally reachable"
+    default: ""
+  pushgateway.web.route_prefix:
+    description: "Prefix for the internal routes of web endpoints"
+  pushgateway.web.telemetry_path:
+    description: "Path under which to expose metrics"
+    default: "/metrics"
+  pushgateway.web.config:
+    description: "Configuration YAML structure that can enable TLS or authentication. See: https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md"
+    default: {}
+
+  pushgateway.log_format:
+    description: "Output format of log messages. One of: [logfmt, json]"
+    default: json
+  pushgateway.log_level:
+    description: "Only log messages with the given severity or above. One of: [debug, info, warn, error]"
+    default: info
+
+  pushgateway.persistence_interval:
+    description: "The minimum interval at which to write out the persistence file"
+    default: 5m
+
+  pushgateway.push.disable_consistency_check:
+    description: "Do not check consistency of pushed metrics - DANGEROUS!"
+    default: false
+
+  pushgateway.push.enable_utf8_names:
+    description: "Allow UTF-8 characters in metric and label names"
+    default: false
+
+

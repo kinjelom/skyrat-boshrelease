@@ -1,0 +1,7 @@
+---
+name: boshi_exporter
+
+files:
+  - meta-info/blobs-versions.env
+  - common/pid_utils.sh
+  - boshi_exporter/*.linux-amd64.tar.gz

@@ -1,0 +1,6 @@
+---
+name: firehose_exporter
+
+files:
+  - meta-info/blobs-versions.env
+  - firehose_exporter/*.linux-amd64.tar.gz

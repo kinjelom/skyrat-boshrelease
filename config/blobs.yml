@@ -1,0 +1,32 @@
+blackbox_exporter/blackbox_exporter-0.26.0.linux-amd64.tar.gz:
+  size: 12370868
+  object_id: 6b20cdcb-c35f-4ed2-733f-b7d2796e3867
+  sha: sha256:4b1bb299c685ecff75d41e55e90aae8e02a658395fb14092c7f9c5c9d75016c7
+bosh_exporter/bosh_exporter_7.9.6-dev.linux-amd64.tar.gz:
+  size: 10523039
+  object_id: c2ad9cd1-b38b-4ac9-4c29-8310ab215fd6
+  sha: sha256:2d01537dd57a469c41335f66d68418968bbc887cb59ee939b753dacaf2b35f3b
+boshi_exporter/boshi_exporter_0.0.5.linux-amd64.tar.gz:
+  size: 8927160
+  object_id: 287e6d11-9278-4204-6f1e-e410258c4b4a
+  sha: sha256:5d563b9b75262d9eeca16683c6563dd3efc964189ac6309dd68796952600f68b
+cf_exporter/cf_exporter_1.4.1.linux-amd64.tar.gz:
+  size: 7701766
+  object_id: 4437cb3a-8fb9-4d4f-4315-5a37db8d9dc4
+  sha: sha256:5f78b3fe6b0ef5a9f1fd611135a055708165b3dbcee766b85ba565eb4a9ff519
+firehose_exporter/firehose_exporter_7.1.8.linux-amd64.tar.gz:
+  size: 5067926
+  object_id: ada98424-eedb-4d2b-6193-d6813f1b2015
+  sha: sha256:7a2a50c70141f23ba0b7672770224a337a496657ed9cecdb31294fde9fcd908b
+firehose_to_syslog/firehose_to_syslog_5.1.0:
+  size: 14996722
+  object_id: 1cb10903-ccf5-4437-7163-d32068c2a09d
+  sha: sha256:34b60ed8c9ca25e1cacedc815ff69d36f3df0202b931f1e5a4b4e12ef511be05
+pushgateway/pushgateway_1.11.1.linux-amd64.tar.gz:
+  size: 11854015
+  object_id: b9c296b6-170b-455e-6a23-6483f1a5f52f
+  sha: sha256:6ce6ffab84d0d71195036326640295c02165462abd12b8092b0fa93188f5ee37
+watchdog_exporter/watchdog_exporter_0.3.0.linux-amd64.tar.gz:
+  size: 7334143
+  object_id: 646f64df-a96f-473a-74c0-a1b72fce8db1
+  sha: sha256:4bfa517a1d57f4fa42ea4b5b101df947f1ed65915ef1eccad54891e7207ff57f
