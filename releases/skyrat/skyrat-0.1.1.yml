@@ -1,0 +1,81 @@
+name: skyrat
+version: 0.1.1
+commit_hash: 665edbd
+uncommitted_changes: false
+jobs:
+- name: bosh_exporter
+  version: 98c58bb450f23e52190c4030c61d713dfa8189b19490f75adb25ca54c8867364
+  fingerprint: 98c58bb450f23e52190c4030c61d713dfa8189b19490f75adb25ca54c8867364
+  sha1: sha256:c9f17812a7c03b861271ef5f2bd4cc59d6fc5b7d787c7655ad44d99bb2c26888
+  packages:
+  - bosh_exporter
+- name: boshi_exporter
+  version: 586e70169c4f19bebddd7dbbf67a6c598f2432c00b13cbca97c8489950aa72b7
+  fingerprint: 586e70169c4f19bebddd7dbbf67a6c598f2432c00b13cbca97c8489950aa72b7
+  sha1: sha256:0715526ed8412c089331ff44cc7699bf205d70e3e09629bfc176a92949564dfa
+  packages:
+  - boshi_exporter
+- name: cf_exporter
+  version: c6795c1ee8b9b01255c216f26778ce808d41cec8f24c888f329b19399be64b76
+  fingerprint: c6795c1ee8b9b01255c216f26778ce808d41cec8f24c888f329b19399be64b76
+  sha1: sha256:cabb07413eff460f09f077f2190a4d9e24215797f4345d6c9483b646b78364ff
+  packages:
+  - cf_exporter
+- name: firehose_exporter
+  version: b3b1e0aab62b558989d556b745f27464e07aab1304ce760d2e6494822752d8f9
+  fingerprint: b3b1e0aab62b558989d556b745f27464e07aab1304ce760d2e6494822752d8f9
+  sha1: sha256:91d909c32bbbd7b9c5348634c30deb6ce361dd408ef2764aefa090d522ff8b30
+  packages:
+  - firehose_exporter
+- name: firehose_to_syslog
+  version: 13295841eedc0c38ad061a1be127c1ca277888638fb103b54c91bd3af3617242
+  fingerprint: 13295841eedc0c38ad061a1be127c1ca277888638fb103b54c91bd3af3617242
+  sha1: sha256:ea34d2b6f6936df3b04126d0a8376011f9418993105e7d89fa93954b9a1e7177
+  packages:
+  - firehose_to_syslog
+- name: pushgateway
+  version: 7e241bf7ffc7208e94d2096420089a57e87bd64aaea3751e90a597404da5dd6d
+  fingerprint: 7e241bf7ffc7208e94d2096420089a57e87bd64aaea3751e90a597404da5dd6d
+  sha1: sha256:404f7dd5efd49b56526b9403332a283a0df57bb59e03205ef7acab25afaab4a3
+  packages:
+  - pushgateway
+packages:
+- name: bosh_exporter
+  version: 12e915e98b98bc60959a5ab95293be96a6990869da9bc7bd373aa6b278027599
+  fingerprint: 12e915e98b98bc60959a5ab95293be96a6990869da9bc7bd373aa6b278027599
+  sha1: sha256:d68fa6ce89935a1f1122bcc6c31d3c3e42adb13307e61ab75d6bd28aefe3abe5
+  dependencies: []
+- name: boshi_exporter
+  version: 9217e49c6664ea3a1c44fe50e12ee274024223d20789c5b92568a2f999d29d65
+  fingerprint: 9217e49c6664ea3a1c44fe50e12ee274024223d20789c5b92568a2f999d29d65
+  sha1: sha256:c717ebe6a99b9f72722ea9d165b0600cb886d859e9991bc23e23774b2734f905
+  dependencies: []
+- name: cf_exporter
+  version: 3b6a01bd64feb831fcc61f68c93c70c9243ed7d0b71af4a319178566e87656b9
+  fingerprint: 3b6a01bd64feb831fcc61f68c93c70c9243ed7d0b71af4a319178566e87656b9
+  sha1: sha256:2461e9679fc5d6faf3ed1848cc72106ec89ce539af6cab381d53abd676eddc7a
+  dependencies: []
+- name: common
+  version: 3557058efc35b0c924c18b132870000351c72308c52f21a15a265e30198408ad
+  fingerprint: 3557058efc35b0c924c18b132870000351c72308c52f21a15a265e30198408ad
+  sha1: sha256:77e88ebee893d33a39e24ec884cb5118f6305cfda354fb846ff3ad903bfc7aaa
+  dependencies: []
+- name: firehose_exporter
+  version: 18ae6b5ea0537984b22fe165fd2f6adb9e1cc6230be145e8fd088e157427d7a3
+  fingerprint: 18ae6b5ea0537984b22fe165fd2f6adb9e1cc6230be145e8fd088e157427d7a3
+  sha1: sha256:5e53366b17c447f7ff77fd76913a3ea303ab903fa3eac1bfc17cfc3f5a19db6b
+  dependencies: []
+- name: firehose_to_syslog
+  version: fdf25ec622a0a3f16cb19af8ca947b616659df9790ff1ae48374f5d863bd108e
+  fingerprint: fdf25ec622a0a3f16cb19af8ca947b616659df9790ff1ae48374f5d863bd108e
+  sha1: sha256:1e239a7ff68de450982bc7799803e679e7c9e4442142d89b5bbf18fa5fe6a1ff
+  dependencies: []
+- name: pushgateway
+  version: 1d86a3bb2684201000744b499dd95464aad046b61c523f1265f9aa8a3535db52
+  fingerprint: 1d86a3bb2684201000744b499dd95464aad046b61c523f1265f9aa8a3535db52
+  sha1: sha256:a678be081cecba1afea0cbb0fef1893aea60db6efb7b940a79d1daa94395e9ee
+  dependencies: []
+license:
+  version: ae18946b5cd7a9a88e62de3230d811980fa47606843e45b52990c198e2f267b5
+  fingerprint: ae18946b5cd7a9a88e62de3230d811980fa47606843e45b52990c198e2f267b5
+  sha1: sha256:60f651f020bbc42d893c7c0ee72de15177f41ad66ad29695dab30597aa7500a6

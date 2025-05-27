@@ -6,6 +6,7 @@ packages:
 
 templates:
   bin/boshi_exporter_ctl.sh.erb: bin/boshi_exporter_ctl
+  #config/bpm.yml.erb: config/bpm.yml
 
 properties:
   boshi_exporter.web.listen_address:

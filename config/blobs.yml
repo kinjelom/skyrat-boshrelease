@@ -2,10 +2,10 @@ bosh_exporter/bosh_exporter_7.9.6-dev.linux-amd64.tar.gz:
   size: 10523039
   object_id: c2ad9cd1-b38b-4ac9-4c29-8310ab215fd6
   sha: sha256:2d01537dd57a469c41335f66d68418968bbc887cb59ee939b753dacaf2b35f3b
-boshi_exporter/boshi_exporter_0.0.3.linux-amd64.tar.gz:
-  size: 8955652
-  object_id: 36b8db5c-ad32-4798-74ba-007da2c2eae6
-  sha: sha256:25b18616c17280c48ba1aa0d7ea835ee18408bc9a7e7784d3f13447c68f4c58b
+boshi_exporter/boshi_exporter_0.0.5.linux-amd64.tar.gz:
+  size: 8927160
+  object_id: 287e6d11-9278-4204-6f1e-e410258c4b4a
+  sha: sha256:5d563b9b75262d9eeca16683c6563dd3efc964189ac6309dd68796952600f68b
 cf_exporter/cf_exporter_1.4.1.linux-amd64.tar.gz:
   size: 7701766
   object_id: 4437cb3a-8fb9-4d4f-4315-5a37db8d9dc4
