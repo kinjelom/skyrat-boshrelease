@@ -1,0 +1,92 @@
+name: skyrat
+version: 0.2.0
+commit_hash: 3ac3e6c
+uncommitted_changes: false
+jobs:
+- name: blackbox_exporter
+  version: 58aff239b135a9924e7ac532042a3a71afadd3289e61221ce64e6860eaecda84
+  fingerprint: 58aff239b135a9924e7ac532042a3a71afadd3289e61221ce64e6860eaecda84
+  sha1: sha256:af6e825ec39d49e35102ba16b2c3b8602e82a6d13eceabf9f9bac87a498bc0a1
+  packages:
+  - blackbox_exporter
+- name: bosh_exporter
+  version: 98c58bb450f23e52190c4030c61d713dfa8189b19490f75adb25ca54c8867364
+  fingerprint: 98c58bb450f23e52190c4030c61d713dfa8189b19490f75adb25ca54c8867364
+  sha1: sha256:c9f17812a7c03b861271ef5f2bd4cc59d6fc5b7d787c7655ad44d99bb2c26888
+  packages:
+  - bosh_exporter
+- name: boshi_exporter
+  version: 586e70169c4f19bebddd7dbbf67a6c598f2432c00b13cbca97c8489950aa72b7
+  fingerprint: 586e70169c4f19bebddd7dbbf67a6c598f2432c00b13cbca97c8489950aa72b7
+  sha1: sha256:0715526ed8412c089331ff44cc7699bf205d70e3e09629bfc176a92949564dfa
+  packages:
+  - boshi_exporter
+- name: cf_exporter
+  version: c6795c1ee8b9b01255c216f26778ce808d41cec8f24c888f329b19399be64b76
+  fingerprint: c6795c1ee8b9b01255c216f26778ce808d41cec8f24c888f329b19399be64b76
+  sha1: sha256:cabb07413eff460f09f077f2190a4d9e24215797f4345d6c9483b646b78364ff
+  packages:
+  - cf_exporter
+- name: firehose_exporter
+  version: b3b1e0aab62b558989d556b745f27464e07aab1304ce760d2e6494822752d8f9
+  fingerprint: b3b1e0aab62b558989d556b745f27464e07aab1304ce760d2e6494822752d8f9
+  sha1: sha256:91d909c32bbbd7b9c5348634c30deb6ce361dd408ef2764aefa090d522ff8b30
+  packages:
+  - firehose_exporter
+- name: firehose_to_syslog
+  version: 13295841eedc0c38ad061a1be127c1ca277888638fb103b54c91bd3af3617242
+  fingerprint: 13295841eedc0c38ad061a1be127c1ca277888638fb103b54c91bd3af3617242
+  sha1: sha256:ea34d2b6f6936df3b04126d0a8376011f9418993105e7d89fa93954b9a1e7177
+  packages:
+  - firehose_to_syslog
+- name: pushgateway
+  version: 7e241bf7ffc7208e94d2096420089a57e87bd64aaea3751e90a597404da5dd6d
+  fingerprint: 7e241bf7ffc7208e94d2096420089a57e87bd64aaea3751e90a597404da5dd6d
+  sha1: sha256:404f7dd5efd49b56526b9403332a283a0df57bb59e03205ef7acab25afaab4a3
+  packages:
+  - pushgateway
+packages:
+- name: blackbox_exporter
+  version: 1946ec6ef866503c675beabe6e687c2f41cde5bec229beaba453293158d4d9c5
+  fingerprint: 1946ec6ef866503c675beabe6e687c2f41cde5bec229beaba453293158d4d9c5
+  sha1: sha256:d823d23294cf955aacbac8661da0b26314754c9aac1ea73283e7e6e6a0326094
+  dependencies: []
+- name: bosh_exporter
+  version: 5062a2751b6fd9cc3692b2094095c19b939fb36a1a63a88c45c35ebc6640c2f5
+  fingerprint: 5062a2751b6fd9cc3692b2094095c19b939fb36a1a63a88c45c35ebc6640c2f5
+  sha1: sha256:ee8f06af1b972e605f73c77d2bdcb4f498f317c78aab153bf9c74b124f85723f
+  dependencies: []
+- name: boshi_exporter
+  version: 3c4c2fb40c2a1027eaa3a899136eeebd6c7e313eb6e55ba6e463871ae54aceed
+  fingerprint: 3c4c2fb40c2a1027eaa3a899136eeebd6c7e313eb6e55ba6e463871ae54aceed
+  sha1: sha256:1db64f6d9e48592a8f61b041f4d54ea027eff171c443bf6f325b050c522d6d1a
+  dependencies: []
+- name: cf_exporter
+  version: 2366fff7decf3bd6b0e274a310be8f75797bc1488307150a26acf1be9e8e6d7a
+  fingerprint: 2366fff7decf3bd6b0e274a310be8f75797bc1488307150a26acf1be9e8e6d7a
+  sha1: sha256:ced5f3a9ea4d6995aee172e8c017662b7f0a4774daa5cefdc7fb38cc844c295c
+  dependencies: []
+- name: common
+  version: 3557058efc35b0c924c18b132870000351c72308c52f21a15a265e30198408ad
+  fingerprint: 3557058efc35b0c924c18b132870000351c72308c52f21a15a265e30198408ad
+  sha1: sha256:77e88ebee893d33a39e24ec884cb5118f6305cfda354fb846ff3ad903bfc7aaa
+  dependencies: []
+- name: firehose_exporter
+  version: 06e29b03ccbf5f8665ea38f68653d433ea9dc6ff12a7b30f7d5877c5f22de074
+  fingerprint: 06e29b03ccbf5f8665ea38f68653d433ea9dc6ff12a7b30f7d5877c5f22de074
+  sha1: sha256:d8412e4fce19d8f40cfb446ce351f74de04a5704b09ce9c45f1cc8d64116bef2
+  dependencies: []
+- name: firehose_to_syslog
+  version: f941b140ba619dc27b1ac24140582520abbcbe934e34034fb08f51e3f4c890ec
+  fingerprint: f941b140ba619dc27b1ac24140582520abbcbe934e34034fb08f51e3f4c890ec
+  sha1: sha256:2fff41c6fcd9f69d49d3c17bd7b3080542482f867bd1c85b790ab08a29fe896a
+  dependencies: []
+- name: pushgateway
+  version: 5fd227580eeaedf5a0f211a7d077df32a72b6ea816d390c4f1ce99036928057b
+  fingerprint: 5fd227580eeaedf5a0f211a7d077df32a72b6ea816d390c4f1ce99036928057b
+  sha1: sha256:60139cff60a06f93f7752c448047996000dd1da652632b32f0be0b5bbf39fdc4
+  dependencies: []
+license:
+  version: ae18946b5cd7a9a88e62de3230d811980fa47606843e45b52990c198e2f267b5
+  fingerprint: ae18946b5cd7a9a88e62de3230d811980fa47606843e45b52990c198e2f267b5
+  sha1: sha256:60f651f020bbc42d893c7c0ee72de15177f41ad66ad29695dab30597aa7500a6
