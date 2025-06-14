@@ -1,3 +1,7 @@
+blackbox_exporter/blackbox_exporter-0.26.0.linux-amd64.tar.gz:
+  size: 12370868
+  object_id: 6b20cdcb-c35f-4ed2-733f-b7d2796e3867
+  sha: sha256:4b1bb299c685ecff75d41e55e90aae8e02a658395fb14092c7f9c5c9d75016c7
 bosh_exporter/bosh_exporter_7.9.6-dev.linux-amd64.tar.gz:
   size: 10523039
   object_id: c2ad9cd1-b38b-4ac9-4c29-8310ab215fd6

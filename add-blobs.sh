@@ -19,6 +19,8 @@ function down_add_blob {
   fi
 }
 
+down_add_blob "blackbox_exporter" "blackbox_exporter-${BLACKBOX_EXPORTER_VERSION}.linux-amd64.tar.gz" "$BLACKBOX_EXPORTER_URL"
+
 down_add_blob "bosh_exporter" "bosh_exporter_${BOSH_EXPORTER_VERSION}.linux-amd64.tar.gz" "$BOSH_EXPORTER_URL"
 
 down_add_blob "boshi_exporter" "boshi_exporter_${BOSHI_EXPORTER_VERSION}.linux-amd64.tar.gz" "$BOSHI_EXPORTER_URL"
