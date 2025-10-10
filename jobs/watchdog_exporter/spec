@@ -10,42 +10,53 @@ templates:
 
 properties:
   watchdog_exporter.listen_address:
-    description: ""
+    description: "Address and port where the exporter HTTP server listens."
     default: "0.0.0.0:9321"
+
   watchdog_exporter.telemetry_path:
-    description: ""
+    description: "HTTP path for Prometheus metrics exposition."
     default: /metrics
+
+  watchdog_exporter.probe_interval:
+    description: "Time interval between consecutive endpoint probes."
+    default: "1m"
+
   watchdog_exporter.max_workers_count:
-    description: ""
+    description: "Maximum number of parallel probe workers."
     default: 4
+
   watchdog_exporter.default_timeout:
-    description: ""
+    description: "Default timeout for a single HTTP request or probe."
     default: 5s
-  watchdog_exporter.response_body_limit:
-    description: ""
+
+  watchdog_exporter.default_response_body_limit:
+    description: "Default maximum number of bytes to read from an HTTP response body."
     default: 1024
+
   watchdog_exporter.debug:
-    description: ""
+    description: "Enable verbose debug logging (true/false)."
     default: false
 
   watchdog_exporter.metrics.namespace:
-    description: ""
+    description: "Prometheus metrics namespace prefix."
     default: watchdog
+
   watchdog_exporter.metrics.environment:
-    description: ""
-    default: dev
+    description: "Label identifying deployment environment (e.g. dev, prod)."
+    default: "unknown"
 
   watchdog_exporter.routes:
-    description: ""
+    description: "Named route definitions (proxy or target overrides)."
     default:
       direct: {}
 
   watchdog_exporter.endpoints:
-    description: ""
+    description: "List of monitored endpoints with request and validation rules."
     default: {}
     example:
       "example.com":
         protocol: http
+        inspect-tls-certs: true
         routes: [direct]
         request:
           method: GET
@@ -61,6 +72,7 @@ properties:
         routes: [direct]
         request:
           timeout: 10s
+          response-body-limit: 1024
           method: GET
           url: "https://example.org"
           headers: {}

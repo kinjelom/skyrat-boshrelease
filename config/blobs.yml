@@ -26,7 +26,7 @@ pushgateway/pushgateway_1.11.1.linux-amd64.tar.gz:
   size: 11854015
   object_id: b9c296b6-170b-455e-6a23-6483f1a5f52f
   sha: sha256:6ce6ffab84d0d71195036326640295c02165462abd12b8092b0fa93188f5ee37
-watchdog_exporter/watchdog_exporter_0.4.0.linux-amd64.tar.gz:
-  size: 7352074
-  object_id: 0f91930a-b4fb-4179-7323-5b3a3ca9ec7f
-  sha: sha256:045b6a31f0376d5a6925aff238269fd4895f3b35615e156ff7f9f75a46bb98c7
+watchdog_exporter/watchdog_exporter_0.5.0.linux-amd64.tar.gz:
+  size: 7389062
+  object_id: 45a6a9a6-00d7-4df4-5afa-81036e6f0ff7
+  sha: sha256:ccc589f4dd52f5ef7d1c6c851d7e74dc5a9f3bdd6f9ee2085fc961443a5ceb05

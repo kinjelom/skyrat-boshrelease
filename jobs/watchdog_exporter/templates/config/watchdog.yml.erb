@@ -1,9 +1,10 @@
 settings:
   listen-address: <%= p('watchdog_exporter.listen_address') %>
   telemetry-path: <%= p('watchdog_exporter.telemetry_path') %>
+  probe-interval: <%= p('watchdog_exporter.probe_interval') %>
   max-workers-count: <%= p('watchdog_exporter.max_workers_count') %>
   default-timeout: <%= p('watchdog_exporter.default_timeout') %>
-  response-body-limit: <%= p('watchdog_exporter.response_body_limit') %>
+  default-response-body-limit: <%= p('watchdog_exporter.default_response_body_limit') %>
   debug: <%= p('watchdog_exporter.debug') %>
 
 metrics:
