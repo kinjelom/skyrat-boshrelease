@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+<%- require 'shellwords' -%>
 
 set -eu
 
@@ -35,13 +36,13 @@ case $1 in
     <% end %>
 
     <% if_p('bosh_exporter.bosh.password') do |password| %>
-    export BOSH_EXPORTER_BOSH_PASSWORD="<%= password %>"
+    export BOSH_EXPORTER_BOSH_PASSWORD=<%= Shellwords.escape(password) %>
     <% end %>
     <% if_p('bosh_exporter.bosh.uaa.client_secret') do |client_secret| %>
-    export BOSH_EXPORTER_BOSH_UAA_CLIENT_SECRET="<%= client_secret %>"
+    export BOSH_EXPORTER_BOSH_UAA_CLIENT_SECRET=<%= Shellwords.escape(client_secret) %>
     <% end %>
     <% if_p('bosh_exporter.web.auth_password') do |auth_password| %>
-    export BOSH_EXPORTER_WEB_AUTH_PASSWORD="<%= auth_password %>"
+    export BOSH_EXPORTER_WEB_AUTH_PASSWORD=<%= Shellwords.escape(auth_password) %>
     <% end %>
 
     exec bosh_exporter \
@@ -90,7 +91,7 @@ case $1 in
       --sd.file-interval="<%= interval %>" \
       <% end %> \
       <% if_p('bosh_exporter.sd.processes_regexp') do |processes_regexp| %> \
-      --sd.processes_regexp="<%= namespace %>" \
+      --sd.processes_regexp=<%= Shellwords.escape(processes_regexp) %> \
       <% end %> \
       --web.listen-address=":<%= p('bosh_exporter.web.port') %>" \
       <% if_p('bosh_exporter.web.telemetry_path') do |path| %> \

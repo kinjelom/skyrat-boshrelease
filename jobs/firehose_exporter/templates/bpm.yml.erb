@@ -67,8 +67,8 @@ config = {
     {
       "name"       => "firehose_exporter",
       "executable" => "/var/vcap/packages/firehose_exporter/bin/firehose_exporter",
-      "env"        => env,
-      "args"       => args,
+      "env"        => env.transform_values(&:to_s),
+      "args"       => args.map(&:to_s),
     }
   ]
 }

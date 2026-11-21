@@ -45,7 +45,7 @@ case $1 in
       --persistence.interval="<%= persistence_interval %>" \
       <% end %> \
       <% if p('pushgateway.push.disable_consistency_check') %>--push.disable-consistency-check <% end %> \
-      <% if p('pushgateway.push.enable_utf8_names') %>--enable-utf8-names <% end %> \
+      <% if p('pushgateway.push.enable_utf8_names') %>--push.enable-utf8-names <% end %> \
       >>  ${LOG_DIR}/pushgateway.stdout.log \
       2>> ${LOG_DIR}/pushgateway.stderr.log
     ;;

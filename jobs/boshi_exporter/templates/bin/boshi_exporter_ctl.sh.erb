@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+<%- require 'shellwords' -%>
 
 set -eu
 
@@ -22,7 +23,7 @@ case $1 in
     echo $$ > ${PIDFILE}
 
     <%- p("boshi_exporter.env", {}).each do |key, val| -%>
-    export <%= key %>='<%= val %>'
+    export <%= key %>=<%= Shellwords.escape(val.to_s) %>
     <%- end -%>
 
     exec "${PKG_DIR}/bin/boshi_exporter" \

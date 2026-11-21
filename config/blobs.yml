@@ -1,7 +1,7 @@
-blackbox_exporter/blackbox_exporter-0.26.0.linux-amd64.tar.gz:
-  size: 12370868
-  object_id: 6b20cdcb-c35f-4ed2-733f-b7d2796e3867
-  sha: sha256:4b1bb299c685ecff75d41e55e90aae8e02a658395fb14092c7f9c5c9d75016c7
+blackbox_exporter/blackbox_exporter-0.29.1.linux-amd64.tar.gz:
+  size: 17656416
+  object_id: 5c7fae24-d931-4b3d-6c3c-479a83f92333
+  sha: sha256:b82b81839e6317e84fdd367f46d7ddd3b773fa09cbe2e3d5633a59171d741e76
 bosh_exporter/bosh_exporter_7.9.6-dev.linux-amd64.tar.gz:
   size: 10523039
   object_id: c2ad9cd1-b38b-4ac9-4c29-8310ab215fd6
@@ -10,22 +10,22 @@ boshi_exporter/boshi_exporter_0.0.5.linux-amd64.tar.gz:
   size: 8927160
   object_id: 287e6d11-9278-4204-6f1e-e410258c4b4a
   sha: sha256:5d563b9b75262d9eeca16683c6563dd3efc964189ac6309dd68796952600f68b
-cf_exporter/cf_exporter_1.4.1.linux-amd64.tar.gz:
-  size: 7701766
-  object_id: 4437cb3a-8fb9-4d4f-4315-5a37db8d9dc4
-  sha: sha256:5f78b3fe6b0ef5a9f1fd611135a055708165b3dbcee766b85ba565eb4a9ff519
-firehose_exporter/firehose_exporter_7.1.8.linux-amd64.tar.gz:
-  size: 5067926
-  object_id: ada98424-eedb-4d2b-6193-d6813f1b2015
-  sha: sha256:7a2a50c70141f23ba0b7672770224a337a496657ed9cecdb31294fde9fcd908b
+cf_exporter/cf_exporter_2.2.3.linux-amd64.tar.gz:
+  size: 9097462
+  object_id: b8953804-4b4e-4921-5e09-4f21c941def5
+  sha: sha256:b6ec5a233231be417c595404589896e0859beab7c2d63b9f77f0d58e2d964236
+firehose_exporter/firehose_exporter_7.1.15.linux-amd64.tar.gz:
+  size: 5885121
+  object_id: d7b8a36c-7fc2-445d-7da3-0cbee22e7ae9
+  sha: sha256:639c08f5cd6cdf49b12191469e199441aea75aa7aec973f4f189da1899969624
 firehose_to_syslog/firehose_to_syslog_5.1.0:
   size: 14996722
   object_id: 1cb10903-ccf5-4437-7163-d32068c2a09d
   sha: sha256:34b60ed8c9ca25e1cacedc815ff69d36f3df0202b931f1e5a4b4e12ef511be05
-pushgateway/pushgateway_1.11.1.linux-amd64.tar.gz:
-  size: 11854015
-  object_id: b9c296b6-170b-455e-6a23-6483f1a5f52f
-  sha: sha256:6ce6ffab84d0d71195036326640295c02165462abd12b8092b0fa93188f5ee37
+pushgateway/pushgateway_1.11.4.linux-amd64.tar.gz:
+  size: 12575258
+  object_id: 73333fdb-6f64-4ca0-7ba1-f37c977c8c5f
+  sha: sha256:e6d631d1f511ce386de2dcbc3bd18a7165d8117588f2aefea15e89cf794751b3
 watchdog_exporter/watchdog_exporter_0.5.0.linux-amd64.tar.gz:
   size: 7389062
   object_id: 45a6a9a6-00d7-4df4-5afa-81036e6f0ff7

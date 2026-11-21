@@ -1,7 +1,6 @@
-name: coredns
+name: skyrat
 blobstore:
   provider: s3
   options:
-    bucket_name: boshrelease-skyrat
-
-
+    folder_name: skyrat
+    bucket_name: boshreleases

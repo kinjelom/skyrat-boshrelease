@@ -1,4 +1,42 @@
 #!/bin/bash
+<%
+  require 'shellwords'
+  q = lambda { |v| Shellwords.escape(v.to_s) }
+
+  syslog_host = p('firehose_to_syslog.syslog.host')
+  syslog_port = p('firehose_to_syslog.syslog.port')
+
+  args = []
+  args << "--api-endpoint=#{q.(p('firehose_to_syslog.cloudfoundry.api_endpoint'))}"
+  if_p('firehose_to_syslog.cloudfoundry.doppler_endpoint') { |v| args << "--doppler-endpoint=#{q.(v)}" }
+  args << "--client-id=#{q.(p('firehose_to_syslog.cloudfoundry.firehose_client_id'))}"
+  args << "--client-secret=#{q.(p('firehose_to_syslog.cloudfoundry.firehose_client_secret'))}"
+  args << "--subscription-id=#{q.(p('firehose_to_syslog.cloudfoundry.firehose_subscription_id'))}"
+  args << "--syslog-protocol=#{q.(p('firehose_to_syslog.syslog.protocol'))}"
+  args << "--syslog-server=#{q.("#{syslog_host}:#{syslog_port}")}"
+  if_p('firehose_to_syslog.syslog.cert_pem') { args << '--cert-pem-syslog="${JOB_DIR}/config/cert.pem"' }
+  args << "--events=#{q.(p('firehose_to_syslog.cloudfoundry.firehose_events').join(','))}"
+  if_p('firehose_to_syslog.cloudfoundry.orgs') { |v| args << "--orgs=#{q.(Array(v).join(','))}" }
+  if_p('firehose_to_syslog.cloudfoundry.app_name_suffixes_to_strip') { |v| args << "--strip-app-name-suffixes=#{q.(Array(v).join(','))}" }
+  if_p('firehose_to_syslog.cloudfoundry.extra_fields') do |fields|
+    args << "--extra-fields=#{q.(fields.map { |k, v| "#{k}:#{v}" }.join(','))}"
+  end
+  args << '--boltdb-path="${DB_DIR}/firehose_to_syslog.cache.db"'
+  args << "--logs-buffer-size=#{q.(p('firehose_to_syslog.cloudfoundry.logs_buffer_size'))}"
+  args << "--min-retry-delay=#{q.(p('firehose_to_syslog.cloudfoundry.min_retry_delay'))}"
+  args << "--max-retry-delay=#{q.(p('firehose_to_syslog.cloudfoundry.max_retry_delay'))}"
+  args << "--max-retry-count=#{q.(p('firehose_to_syslog.cloudfoundry.max_retry_count'))}"
+  args << "--log-formatter-type=#{q.(p('firehose_to_syslog.cloudfoundry.log_formatter_type'))}"
+  args << "--cc-rps=#{q.(p('firehose_to_syslog.cloudfoundry.cc_polling_request'))}"
+  args << "--cc-pull-time=#{q.(p('firehose_to_syslog.cloudfoundry.firehose_cc_pull_interval'))}"
+
+  # boolean switches: pass only when explicitly true (if_p would also fire on a `false` default)
+  args << '--skip-ssl-validation'        if p('firehose_to_syslog.cloudfoundry.skip_ssl_validation')
+  args << '--skip-ssl-validation-syslog' if p('firehose_to_syslog.syslog.skip_ssl_validation')
+  args << '--ignore-missing-apps'        if p('firehose_to_syslog.cloudfoundry.ignore_missing_apps')
+  args << '--enable-stats-server'        if p('firehose_to_syslog.enable_stats_server')
+  args << '--debug'                      if p('firehose_to_syslog.debug')
+-%>
 
 set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
@@ -10,52 +48,22 @@ export JOB_DIR=/var/vcap/jobs/$JOB_NAME
 export DB_DIR=/var/vcap/store/$JOB_NAME/data
 
 wait_for_service_on_port() {
-  n=0
-  until [ $n -ge 24 ]
-  do
-    nc -4 -z -v $1 $2 2>&1 && break
-    n=$[$n+1]
+  local n=0
+  until [ "$n" -ge 24 ]; do
+    nc -4 -z -v "$1" "$2" 2>&1 && break
+    n=$((n + 1))
     echo "Waiting for $1:$2 to accept connections ($n of 24)..."
     sleep 5
   done
 
-  if [ "$n" -ge "24" ]; then
-     echo "ERROR:  Cannot connect to $1:$2. Exiting..."
-     exit 1
+  if [ "$n" -ge 24 ]; then
+    echo "ERROR: Cannot connect to $1:$2. Exiting..."
+    exit 1
   fi
 }
 
-<%
-  syslog_port = p('firehose_to_syslog.syslog.port')
-  api_endpoint = p('firehose_to_syslog.cloudfoundry.api_endpoint')
-%>
-
 echo "Waiting 2m for syslog ingestor to accept connections..."
-wait_for_service_on_port <%= p("firehose_to_syslog.syslog.host") %> <%= syslog_port %>
+wait_for_service_on_port <%= q.(syslog_host) %> <%= q.(syslog_port) %>
 
-/var/vcap/packages/firehose_to_syslog/bin/firehose_to_syslog \
-    --api-endpoint=<%= api_endpoint %> \
-    <% if_p("firehose_to_syslog.cloudfoundry.doppler_endpoint") do |endpoint| %>--doppler-endpoint=<%= endpoint %><% end %> \
-    <% if_p("firehose_to_syslog.syslog.cert_pem") do %>--cert-pem-syslog=${JOB_DIR}/config/cert.pem<% end %> \
-    <% if_p("firehose_to_syslog.cloudfoundry.skip_ssl_validation") do %>--skip-ssl-validation <% end %> \
-    --client-id=<%= p("firehose_to_syslog.cloudfoundry.firehose_client_id") %> \
-    --client-secret=<%= p("firehose_to_syslog.cloudfoundry.firehose_client_secret") %> \
-    --syslog-protocol=<%= p("firehose_to_syslog.syslog.protocol") %>\
-    --syslog-server=<%= p("firehose_to_syslog.syslog.host") %>:<%= syslog_port %>\
-    <% if_p("firehose_to_syslog.syslog.skip_ssl_validation") do %>--skip-ssl-validation-syslog <% end %> \
-    --events=<%= p('firehose_to_syslog.cloudfoundry.firehose_events').join(',') %> \
-    <% if_p("firehose_to_syslog.cloudfoundry.orgs") do |orgs| %> --orgs="<%= orgs.join(',') %>" <% end %> \
-    <% if_p("firehose_to_syslog.cloudfoundry.app_name_suffixes_to_strip") do |suffixes| %> --strip-app-name-suffixes="<%= suffixes.join(',') %>" <% end %> \
-    <% if_p("firehose_to_syslog.cloudfoundry.extra_fields") do |fields| %> --extra-fields="<%= fields.map { |key, value| "#{key}:#{value}" }.join(',') %>" <% end %> \
-    <% if_p("firehose_to_syslog.cloudfoundry.ignore_missing_apps") do %>--ignore-missing-apps  <% end %> \
-    <% if_p("firehose_to_syslog.enable_stats_server") do %>--enable-stats-server  <% end %> \
-    --subscription-id=<%= p("firehose_to_syslog.cloudfoundry.firehose_subscription_id") %> \
-    --boltdb-path=$DB_DIR/firehose_to_syslog.cache.db \
-    --logs-buffer-size=<%= p("firehose_to_syslog.cloudfoundry.logs_buffer_size") %> \
-    --min-retry-delay=<%= p("firehose_to_syslog.cloudfoundry.min_retry_delay") %> \
-    --log-formatter-type=<%= p("firehose_to_syslog.cloudfoundry.log_formatter_type") %> \
-    --max-retry-delay=<%= p("firehose_to_syslog.cloudfoundry.max_retry_delay") %> \
-    --max-retry-count=<%= p("firehose_to_syslog.cloudfoundry.max_retry_count") %> \
-    --cc-rps=<%= p("firehose_to_syslog.cloudfoundry.cc_polling_request") %> \
-    --cc-pull-time=<%= p("firehose_to_syslog.cloudfoundry.firehose_cc_pull_interval") %> \
-    <% if_p("firehose_to_syslog.debug") do %>--debug \<% end%>
+exec /var/vcap/packages/firehose_to_syslog/bin/firehose_to_syslog \
+<%= args.map { |a| "  #{a}" }.join(" \\\n") %>

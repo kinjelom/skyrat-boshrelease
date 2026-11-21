@@ -12,3 +12,16 @@
   </tr>
 </table>
 
+
+## Tests
+
+```sh
+bundle install
+bosh sync-blobs          # packaging specs build every package from local blobs
+bundle exec rspec        # all specs
+bundle exec rspec --tag ~packaging   # template rendering only (no blobs needed)
+```
+
+- `spec/jobs/` – renders every job template with `bosh-template` and checks the output (valid bash/YAML, flags, quoting).
+- `spec/packaging_spec.rb` – runs each `packaging` script in a sandbox and verifies that all flags/env vars
+  rendered by the job templates are accepted by the packaged binary (`--help`). Run it after every blob bump.
